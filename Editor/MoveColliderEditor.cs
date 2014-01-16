@@ -26,8 +26,12 @@ public class MoveColliderEditor : Editor
                             0.1f, 
                             Vector3.zero, 
                             Handles.SphereCap) );
-                        for (int j = 0; j < vertices.Length; j++) {
-                            vertices[j] -= move;
+                        if (move != vertices[0] + VectorEx.Vec3ToVec2(target.transform.position)) {
+                            
+
+                            for (int j = 0; j < vertices.Length; j++) {
+                                vertices[j] -= move + VectorEx.Vec3ToVec2(target.transform.position); ;
+                            }
                         }
                         collider.SetPath(i, vertices);
                     }
